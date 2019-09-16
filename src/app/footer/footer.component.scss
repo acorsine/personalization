@@ -1,0 +1,36 @@
+@import 'main';
+
+footer {
+    height: 72px;
+    margin: 0;
+    border-top: 0 solid transparent;
+    padding: 24px 32px;
+
+    @include media-breakpoint-up(sm) {
+        border-top: 1px solid $light-grey;
+    }
+
+    @include media-breakpoint-down(md) {
+    	height: 104px;
+    	margin: 0;
+    	padding: 16px;
+    }
+
+    .col-md-8 {
+    	p {
+    		@include media-breakpoint-down(md) {
+	        	margin-bottom: 12px;
+    		}
+    	}
+
+    }
+
+    p {
+    	margin: 0;
+        font-size: 1rem;
+
+        @include media-breakpoint-down(md) {
+        	font-size: .875rem;
+        }
+    }
+}

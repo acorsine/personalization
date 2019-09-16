@@ -1,0 +1,38 @@
+<div class="home-wrapper">
+	<section class="third-content-hero">
+		<div class="container-fluid m-0 p-0">
+			<p class="content-header text-uppercase">
+				{{layout3.titulo}}
+			</p>
+			<h1 class="content-lead">
+				{{layout3.subtitulo}}
+			</h1>
+			<h3 class="content-description d-none d-md-block">
+				{{layout3.descricao}}
+			</h3>
+			<p class="content-description d-md-none">
+				Controle das suas finanças, orientações para alavancar o seu negócio e para conseguir crédito.
+			</p>
+
+			<div class="card-deck row">
+				<div class="card col-sm-4 p-0" *ngFor="let article of smallArticleList">
+					<a class="card-link" href="/services">
+					  	<div class="img-wrapper d-none d-sm-block" [ngStyle]="{'background-image':'url(' + article.cover_pic.url + ')'}"></div>
+            			<img class="card-img-top d-sm-none" src="{{ article.cover_pic.url }}" alt="Card image cap">
+					  	<div class="card-body">
+					  		<h3 class="card-title">{{ article.title }}</h3>
+					  		<small class="card-text text-muted">2 horas atrás</small>
+					  	</div>
+					</a>
+				</div>	
+			</div>
+
+			<a class="btn btn-secondary btn-more-info d-none d-md-block" [href]="botaoLink" target="_blank">
+				{{layout3.botaoTexto}}
+			</a>
+			<a class="btn btn-secondary btn-more-info d-md-none" href="/blog" target="_blank">
+				Mais informações para o seu negócio
+			</a>
+		</div>
+  </section>
+</div>

@@ -1,0 +1,45 @@
+.icon {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+}
+
+.icon-nf {
+	mask: url(/assets/img/icons/ic-bank-statement.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-boleto {
+	mask: url(/assets/img/icons/ic-bill-payment.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-conta {
+	mask: url(/assets/img/icons/ic-bank.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-credito {
+	mask: url(/assets/img/icons/ic-bank-credit.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-check {
+	mask: url(/assets/img/icons/ic-circle-check.svg) no-repeat;
+	mask-size: 100%;
+}	
+
+.icon-cadastrar {
+	mask: url(/assets/img/icons/ico-cadastro-cnpj.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-abrir {
+	mask: url(/assets/img/icons/ico-abrir-cnpj.svg) no-repeat;
+	mask-size: 100%;
+}
+
+.icon-das {
+	mask: url(/assets/img/icons/ico-meudas-small.svg) no-repeat;
+	mask-size: 100%;
+}

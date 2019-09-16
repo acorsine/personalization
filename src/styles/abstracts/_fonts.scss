@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'SantanderText';
+  src: url("/assets/fonts/SantanderText/SantanderText-Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  font-weight: bold;
+  src: url("/assets/fonts/SantanderText/SantanderText-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  font-weight: lighter;
+  src: url("/assets/fonts/SantanderText/SantanderText-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  font-style: italic;
+  src: url("/assets/fonts/SantanderText/SantanderText-Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  font-weight: bold;
+  font-style: italic;
+  src: url("/assets/fonts/SantanderText/SantanderText-BoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  font-weight: lighter;
+  font-style: italic;
+  src: url("/assets/fonts/SantanderText/SantanderText-LightItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderHeadline';
+  src: url("/assets/fonts/SantanderHeadline/SantanderHeadline-Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'SantanderHeadline';
+  font-weight: bold;
+  src: url("/assets/fonts/SantanderHeadline/SantanderHeadline-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderHeadline';
+  font-style: italic;
+  src: url("/assets/fonts/SantanderHeadline/SantanderHeadline-It.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SantanderHeadline';
+  font-weight: bold;
+  font-style: italic;
+  src: url("/assets/fonts/SantanderHeadline/SantanderHeadline-BoldIt.otf") format("opentype");
+}

@@ -1,0 +1,25 @@
+<div class="home-wrapper">
+	<section class="second-content-hero row m-0">
+		<div class="col-8 col-md-6 p-0">
+			<p class="content-header text-uppercase">
+				{{layout2.titulo}}
+			</p> 
+			<h1 class="content-lead">
+				{{layout2.subtitulo}}
+			</h1>
+			<p class="content-description d-md-none">
+				{{layout2.descricao}}
+			</p>
+			<h3 class="content-description d-none d-md-block">
+				{{layout2.descricao}}
+			</h3>
+			<a class="btn btn-primary btn-order" [href]="layout2.botaoLink" target="_blank">
+				{{layout2.botaoTexto}}
+			</a>
+		</div>
+		<div class="col-4 col-md-6 p-0 text-right">
+			<img class="superget-img d-md-none" [src]="layout2.ilustracao">
+			<img class="superget-img d-none d-md-block" [src]="layout2.ilustracao">
+		</div>
+  </section>
+</div>

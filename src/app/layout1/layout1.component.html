@@ -1,0 +1,40 @@
+<div class="home-wrapper">
+  <section class="first-content-hero">
+    <p class="content-header text-uppercase">
+      {{layout1.titulo}}
+    </p> 
+    <h1 class="content-lead">
+      {{layout1.subtitulo}}
+    </h1>
+    <div class="content-card d-none d-md-inline-block">
+      <div class="icon-wrapper">
+        <img class="icon-img" [src]="layout1.card1Imagem">
+        <p class="icon-header m-0">{{layout1.card1Titulo}}</p>
+      </div>
+      <h3 class="card-description">{{layout1.card1Descricao}}</h3>
+      <div class="text-right">
+        <button class="btn btn-secondary btn-card" (click)="card1BotaoLink">
+          {{layout1.card1BotaoTexto}}
+        </button>
+      </div>	
+    </div>
+    <div class="content-card d-none d-md-inline-block">
+      <div class="icon-wrapper">
+        <img class="icon-img" [src]="layout1.card2Imagem">
+        <p class="icon-header m-0">{{layout1.card2Titulo}}</p>
+      </div>
+      <h3 class="card-description">{{layout1.card2Descricao}}</h3>
+      <div class="text-right">
+        <button class="btn btn-secondary btn-card" (click)="checkCNPJ('nota-fiscal')">
+          {{layout1.card2BotaoTexto}}
+        </button>
+      </div>
+    </div>
+    <div class="col-4 col-md-6 p-0 text-right">
+			<img class="superget-img d-md-none" src="">
+			<img class="superget-img d-none d-md-block" src="">
+		</div>
+  </section>
+</div>
+
+<!-- Remover links -->
