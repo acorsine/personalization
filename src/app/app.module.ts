@@ -13,6 +13,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { Layout5Component } from './layout5/layout5.component';
 import { Layout6Component } from './layout6/layout6.component';
+import { Layout8Component } from './layout8/layout8.component';
+import { Layout7Component } from './layout7/layout7.component';
+import { SegmentosComponent } from './segmentos/segmentos.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { Layout6Component } from './layout6/layout6.component';
     HeaderComponent,
     FooterComponent,
     Layout5Component,
-    Layout6Component
+    Layout6Component,
+    Layout8Component,
+    Layout7Component,
+    SegmentosComponent
   ],
   imports: [
     BrowserModule,

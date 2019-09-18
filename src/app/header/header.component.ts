@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { pageLoad } from '../functions';
 
 @Component({
   selector: 'app-header',
@@ -11,5 +12,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  loadAgain(sgs){
+    pageLoad(sgs);
+  }
 }

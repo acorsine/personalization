@@ -1,1 +1,82 @@
-<p>layout6 works!</p>
+<div class="services-wrapper">
+    <section class="second-content-hero logged-hero">
+        <h1 class="content-description d-none d-md-block font-weight-normal">Pagamento de DAS</h1>
+        <h3 class="content-description d-md-none">Pagamento de DAS</h3>
+        <div class="row m-0">
+            <div class="col-md-8">
+                <div class="content-card">
+                    <div class="header-wrapper">
+                        <div class="header-content">
+                            <img class="icon-img" src="assets/img/icons/ico-meudas.svg">
+                            <p class="icon-header black-text">Meu DAS</p>
+                        </div>
+                        <div class="header-content d-block">
+                            <p class="d-none d-md-block text-uppercase m-0">Situação do DAS</p>
+                            <div class="icon-wrapper">
+                                <span class="icon icon-check"></span>
+                                <h4 class="icon-header green-text text-uppercase">Em dia</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="content-lead d-none d-md-block black-text">Fique em dia com seus impostos</h2>
+                    <h3 class="content-lead d-md-none">Fique em dia com seus impostos</h3>
+                    <p class="content-description">
+                        Seu DAS atual vence no dia <strong class="black-text">20/08</strong>
+                    </p>
+                    <button class="btn btn-primary btn-card d-md-none" (click)="checkCNPJ('das')">
+                        Ver boleto
+                    </button>
+                    <button class="btn btn-primary btn-card d-none d-md-inline-block" (click)="checkCNPJ('das')">
+                        Pagar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="secondary-header-wrapper">
+                    <img class="icon-img d-inline-block" src="assets/img/icons/ic-payment-summary.svg">
+                    <p class="icon-header d-inline-block">Meu imposto DAS</p>
+                </div>
+
+                <div class="payment-wrapper">
+                    <div class="row m-0">
+                        <div class="col-11 col-md-10 p-0">
+                            <div class="payment-content">
+                                <p class="content-description text-uppercase">Jun / 2019</p>
+                                <p class="content-description">R$ 55,90</p>
+                            </div>
+                            <div class="payment-content font-weight-bold">
+                                <p class="content-description black-text">20/08/2019</p>
+                                <p class="content-description text-uppercase yellow-text">EM ABERTO</p>
+                            </div>
+                        </div>
+                        <button class="img-wrapper col-1 col-md-2 pr-0" (click)="checkCNPJ('das')">
+                            <img class="icon-img" src="assets/img/icons/ic-arrow-right.svg">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="payment-wrapper">
+                    <div class="payment-content">
+                        <p class="content-description text-uppercase">Jun / 2019</p>
+                        <p class="content-description">R$ 55,90</p>
+                    </div>
+                    <div class="payment-content font-weight-bold">
+                        <p class="content-description black-text">20/08/2019</p>
+                        <p class="content-description text-uppercase green-text">PAGO</p>
+                    </div>
+                </div>
+
+                <div class="payment-wrapper">
+                    <div class="payment-content">
+                        <p class="content-description text-uppercase">Jun / 2019</p>
+                        <p class="content-description">R$ 55,90</p>
+                    </div>
+                    <div class="payment-content font-weight-bold">
+                        <p class="content-description black-text">20/08/2019</p>
+                        <p class="content-description text-uppercase green-text">PAGO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
