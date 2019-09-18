@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { pageLoad } from '../functions';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +8,12 @@ import { pageLoad } from '../functions';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appComponent:AppComponent) { }
 
   ngOnInit() {
   }
-  loadAgain(sgs){
-    pageLoad(sgs);
+
+  saveSgs(valor) {
+    this.appComponent.loadSgs(valor);
   }
 }
