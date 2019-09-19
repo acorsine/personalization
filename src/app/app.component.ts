@@ -25,10 +25,14 @@ import { ComponentHostDirective } from './component-host.directive';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
+
+
 export class AppComponent implements OnInit {
+
+
   layout1: Layout1 = new Layout1();
   layout2: Layout2 = new Layout2();
   layout3: Layout3 = new Layout3();
@@ -48,9 +52,12 @@ export class AppComponent implements OnInit {
     layout_8: Layout8Component
   }
 
+
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) { 
+   
+  }
 
   ngOnInit(): void {
     this.loadPage();
