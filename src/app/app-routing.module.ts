@@ -8,3 +8,32 @@ const routes: Routes = [];
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+(function(angular) {
+
+  angular
+    .module('app', ['ngRoute'])
+    .run($run);
+
+  // Safely instantiate dataLayer
+  $run.$inject = ['$rootScope', '$location', '$window'];
+
+  function $run($rootScope, $location, $window) {
+
+    var dataLayer = $window.dataLayer = $window.dataLayer || [];
+
+    $rootScope.$on('$routeChangeSuccess', function() {
+
+      $window.dataLayer.push({
+        event: 'ngRouteChange',
+        attributes: {
+          route: $location.path()
+        }
+      });
+
+    });
+
+  }
+
+})
+
