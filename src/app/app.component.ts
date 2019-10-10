@@ -21,6 +21,7 @@ import { Layout8Component } from './layout8/layout8.component';
 
 import { IComponentHost } from './component-host.interface';
 import { ComponentHostDirective } from './component-host.directive';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   selector: 'app-root',
@@ -61,19 +62,44 @@ export class AppComponent implements OnInit {
    
   }
 
-  
-
   ngOnInit(): void {
     this.loadPage();
+    // this.routaGA();
   };
-
 
   loadSgs(sgs) {
     localStorage.setItem('sgs', sgs);
     window.location.reload();
   };
 
+// (function(angular) {
 
+    routaGA(angular){
+      angular
+      .module('app', ['ngRoute'])
+      .run($run);
+  
+    // Safely instantiate dataLayer
+    $run.$inject = ['$rootScope', '$location', '$window'];
+  
+    function $run($rootScope, $location, $window) {
+  
+      var dataLayer = $window.dataLayer = $window.dataLayer || [];
+  
+      $rootScope.$on('$routeChangeSuccess', function() {
+  
+        dataLayer.push({
+          event: 'ngRouteChange',
+          attributes: {
+            route: $location.path()
+          }
+        });
+  
+      });
+  
+    }
+  
+  }
 
   private loadPage() {
     const segmento = localStorage.getItem('sgs')
