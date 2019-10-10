@@ -52,6 +52,8 @@ export class AppComponent implements OnInit {
     layout_8: Layout8Component
   }
 
+  
+
 
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
@@ -59,14 +61,19 @@ export class AppComponent implements OnInit {
    
   }
 
+  
+
   ngOnInit(): void {
     this.loadPage();
   };
+
 
   loadSgs(sgs) {
     localStorage.setItem('sgs', sgs);
     window.location.reload();
   };
+
+
 
   private loadPage() {
     const segmento = localStorage.getItem('sgs')

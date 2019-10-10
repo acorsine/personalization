@@ -24,7 +24,7 @@ export class AppRoutingModule { }
 
     $rootScope.$on('$routeChangeSuccess', function() {
 
-      $window.dataLayer.push({
+      dataLayer.push({
         event: 'ngRouteChange',
         attributes: {
           route: $location.path()
