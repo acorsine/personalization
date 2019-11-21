@@ -1,39 +1,37 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { AppComponent } from './app.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '',
+   pathMatch:'full',
+   component: AppComponent
+  },
+  
+  {path: 'profileform', 
+   component: ProfileEditorComponent
+  },
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+];
 
-(function(angular) {
 
-  angular
-    .module('app', ['ngRoute'])
-    .run($run);
+//* angular.module('virtualPage', [])
+//.run(function ($rootScope, $window) {
+//    $rootScope.$on("$routeChangeStart",function(event, next, current){
+   // Caso o evento do angular seja de alteracao de rota disparar o evento customizado
+//   if(next.templateUrl) {
+       // Evento customizado do google tag manager
+//       $window.dataLayer.push(
+//         {
+//           'event': 'routeChange’,
+//           'virtualPageView': next.templateUrl
+//         }
+//      );
+//    }
+//  });
+//*});
 
-  // Safely instantiate dataLayer
-  $run.$inject = ['$rootScope', '$location', '$window'];
+export const AppRoutingModule = RouterModule.forRoot(routes);
 
-  function $run($rootScope, $location, $window) {
-
-    var dataLayer = $window.dataLayer = $window.dataLayer || [];
-
-    $rootScope.$on('$routeChangeSuccess', function() {
-
-      dataLayer.push({
-        event: 'ngRouteChange',
-        attributes: {
-          route: $location.path()
-        }
-      });
-
-    });
-
-  }
-
-})
 

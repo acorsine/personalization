@@ -10,6 +10,7 @@ import { Layout6 } from './models/layout_6';
 import { Layout7 } from './models/layout_7';
 import { Layout8 } from './models/layout_8';
 
+
 import { Layout1Component } from './layout1/layout1.component';
 import { Layout2Component } from './layout2/layout2.component';
 import { Layout3Component } from './layout3/layout3.component';
@@ -22,6 +23,10 @@ import { Layout8Component } from './layout8/layout8.component';
 import { IComponentHost } from './component-host.interface';
 import { ComponentHostDirective } from './component-host.directive';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+import { from } from 'rxjs';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+
+
 
 @Component({
   selector: 'app-root',
@@ -29,10 +34,7 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
   styleUrls: ['./app.component.scss'],
 })
 
-
-
 export class AppComponent implements OnInit {
-
 
   layout1: Layout1 = new Layout1();
   layout2: Layout2 = new Layout2();
@@ -53,9 +55,6 @@ export class AppComponent implements OnInit {
     layout_8: Layout8Component
   }
 
-  
-
-
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) { 
@@ -64,7 +63,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPage();
-    // this.routaGA();
   };
 
   loadSgs(sgs) {
@@ -73,33 +71,6 @@ export class AppComponent implements OnInit {
   };
 
 // (function(angular) {
-
-    routaGA(angular){
-      angular
-      .module('app', ['ngRoute'])
-      .run($run);
-  
-    // Safely instantiate dataLayer
-    $run.$inject = ['$rootScope', '$location', '$window'];
-  
-    function $run($rootScope, $location, $window) {
-  
-      var dataLayer = $window.dataLayer = $window.dataLayer || [];
-  
-      $rootScope.$on('$routeChangeSuccess', function() {
-  
-        dataLayer.push({
-          event: 'ngRouteChange',
-          attributes: {
-            route: $location.path()
-          }
-        });
-  
-      });
-  
-    }
-  
-  }
 
   private loadPage() {
     const segmento = localStorage.getItem('sgs')

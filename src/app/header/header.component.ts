@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+
 interface Alert {
   type: string;
   message: string;
 }
-
 
 @Component({
   selector: 'app-header',

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +18,8 @@ import { Layout7Component } from './layout7/layout7.component';
 import { Layout8Component } from './layout8/layout8.component';
 import { SegmentosComponent } from './segmentos/segmentos.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { ReactiveFormsModule} from '@angular/forms';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 
 
 @NgModule({
@@ -36,13 +38,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     Layout7Component,
     Layout8Component,
     SegmentosComponent,
+    ProfileEditorComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
+
   providers: [],
   entryComponents: [Layout1Component, Layout2Component, Layout3Component, Layout4Component, Layout5Component,
     Layout6Component, Layout7Component, Layout8Component],
