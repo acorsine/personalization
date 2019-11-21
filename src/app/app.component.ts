@@ -26,8 +26,6 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 import { from } from 'rxjs';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -54,6 +52,7 @@ export class AppComponent implements OnInit {
     layout_7: Layout7Component,
     layout_8: Layout8Component
   }
+
 
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
