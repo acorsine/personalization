@@ -1,7 +1,11 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
-<profile-editor></profile-editor>
 <ng-template appComponentHost></ng-template>
+<h1>{{title}}</h1>
+<router-outlet></router-outlet>
+<nav>
+    <a routerLink="/">Index</a>
+    <a routerLink="/home">Home</a>
+</nav>
 <app-footer></app-footer>
 
 

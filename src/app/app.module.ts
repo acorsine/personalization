@@ -20,6 +20,7 @@ import { SegmentosComponent } from './segmentos/segmentos.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule} from '@angular/forms';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     Layout8Component,
     SegmentosComponent,
     ProfileEditorComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
