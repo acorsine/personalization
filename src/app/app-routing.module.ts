@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
-import { AppComponent } from './app.component';
+import { RichComponent } from './rich/rich.component';
 
 const routes: Routes = [
-  {path: '',
-   pathMatch:'full',
-   component: AppComponent
-  },
-  
-  {path: 'profileform', 
-   component: ProfileEditorComponent
-  },
-
+  { path:'', component: RichComponent},
+  {path: 'profileform', component: ProfileEditorComponent},
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
 //* angular.module('virtualPage', [])
 //.run(function ($rootScope, $window) {
@@ -30,7 +29,6 @@ const routes: Routes = [
 //    }
 //  });
 //*});
-
-export const AppRoutingModule = RouterModule.forRoot(routes);
+//export const AppRoutingModule = RouterModule.forRoot(routes);
 
 

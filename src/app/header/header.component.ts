@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
+import { RichComponent } from '../rich/rich.component';
 
 interface Alert {
   type: string;
@@ -13,7 +13,7 @@ interface Alert {
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private appComponent: AppComponent) {}
+  constructor(private richComponent: RichComponent) { }
 
   mostrar = false;
   botao: Alert;
@@ -34,10 +34,10 @@ export class HeaderComponent implements OnInit {
   }
 
   saveSgs(valor) {
-    this.appComponent.loadSgs(valor);
+    this.richComponent.loadSgs(valor);
   }
 
-  construirBotao(alerta: Alert){
+  construirBotao(alerta: Alert) {
     this.botao = alerta;
     this.mostrar = true;
 
