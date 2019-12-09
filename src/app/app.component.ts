@@ -33,8 +33,6 @@ import { ComponentHostDirective } from './component-host.directive';
 export class AppComponent implements OnInit {
 
 
-  layout1: Layout1 = new Layout1();
-  layout2: Layout2 = new Layout2();
   layout3: Layout3 = new Layout3();
   layout4: Layout4 = new Layout4();
   layout5: Layout5 = new Layout5();
@@ -55,18 +53,36 @@ export class AppComponent implements OnInit {
 
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) { 
-   
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) {
+
   }
 
   ngOnInit(): void {
-    this.loadPage();
-  };
+    // this.loadPage();
+    var body = {
+      "sessionId": "a1b2c3",
+      "commands":[
+        {
+          "action":"startSession",
+          "audienceID":[
+            {
+              "v":"33053908","t":"string","n":"NR_PESS"
+            }
+          ],
+          "audienceLevel":"Cliente",
+          "ic":"MEI",
+          "relyOnExistingSession":false,
+          "parameters":[],
+          "debug":false
+        }
+      ]
+    };
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-  loadSgs(sgs) {
-    localStorage.setItem('sgs', sgs);
-    window.location.reload();
-  };
+    const url = `http://localhost:4200/api/interact/servlet/RestServlet`;
+    const res = this.http.post(url, body).subscribe((res) => {console.log(res)});
+}
 
   private loadPage() {
     const segmento = localStorage.getItem('sgs')
@@ -78,36 +94,10 @@ export class AppComponent implements OnInit {
         let start = 0;
         res.placements.forEach((placement) => {
           let placementLayout = res.placements[start].creatives[0].LAYOUT
-          if (placementLayout == 'layout_1') {
-            this.layout1.card1BotaoLink = res.placements[start].creatives[0].CARD_1_BOTAO_LINK;
-            this.layout1.card1BotaoTexto = res.placements[start].creatives[0].CARD_1_BOTAO_TEXTO;
-            this.layout1.card1Descricao = res.placements[start].creatives[0].CARD_1_DESCRICAO;
-            this.layout1.card1Imagem = res.placements[start].creatives[0].CARD_1_IMG;
-            this.layout1.card1Titulo = res.placements[start].creatives[0].CARD_1_TITULO;
-            this.layout1.card2BotaoLink = res.placements[start].creatives[0].CARD_2_BOTAO_LINK;
-            this.layout1.card2BotaoTexto = res.placements[start].creatives[0].CARD_2_BOTAO_TEXTO;
-            this.layout1.card2Descricao = res.placements[start].creatives[0].CARD_2_DESCRICAO;
-            this.layout1.card2Imagem = res.placements[start].creatives[0].CARD_2_IMG;
-            this.layout1.card2Titulo = res.placements[start].creatives[0].CARD_2_TITULO;
-            this.layout1.ilustracao = res.placements[start].creatives[0].ILUSTRACAO;
-            this.layout1.titulo = res.placements[start].creatives[0].TITULO;
-            this.layout1.subtitulo = res.placements[start].creatives[0].SUBTITULO;
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-              this.layoutMapping[placement.creatives[0].LAYOUT]);
-            const componentRef = viewContainerRef.createComponent(componentFactory);
-            (componentRef.instance as IComponentHost).setData(this.layout1);
-          }
+          let batatera = new Batatinha();
+          batatera[placementLayout](res, start, this.CallBack.bind(this), placement, viewContainerRef);
           if (placementLayout == 'layout_2') {
-            this.layout2.botaoTexto = res.placements[start].creatives[0].BOTAO_TEXTO;
-            this.layout2.ilustracao = res.placements[start].creatives[0].ILUSTRACAO;
-            this.layout2.botaoLink = res.placements[start].creatives[0].BOTAO_LINK;
-            this.layout2.descricao = res.placements[start].creatives[0].DESCRICAO;
-            this.layout2.titulo = res.placements[start].creatives[0].TITULO;
-            this.layout2.subtitulo = res.placements[start].creatives[0].SUBTITULO;
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-              this.layoutMapping[placement.creatives[0].LAYOUT]);
-            const componentRef = viewContainerRef.createComponent(componentFactory);
-            (componentRef.instance as IComponentHost).setData(this.layout2);
+            batatera[placementLayout](res, start, this.CallBack.bind(this), placement, viewContainerRef);
           }
           if (placementLayout == 'layout_3') {
             this.layout3.botaoTexto = res.placements[start].creatives[0].BOTAO_TEXTO;
@@ -157,4 +147,65 @@ export class AppComponent implements OnInit {
         });
       });
   };
+
+  CallBack(placement, viewContainerRef) {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      this.layoutMapping[placement.creatives[0].LAYOUT]);
+    return viewContainerRef.createComponent(componentFactory);
+  }
+}
+
+export class Batatinha {
+  layout_1(res, start, callback) {
+    let layout1: Layout1 = new Layout1();
+    layout1.card1BotaoLink = res.placements[start].creatives[0].CARD_1_BOTAO_LINK;
+    layout1.card1BotaoTexto = res.placements[start].creatives[0].CARD_1_BOTAO_TEXTO;
+    layout1.card1Descricao = res.placements[start].creatives[0].CARD_1_DESCRICAO;
+    layout1.card1Imagem = res.placements[start].creatives[0].CARD_1_IMG;
+    layout1.card1Titulo = res.placements[start].creatives[0].CARD_1_TITULO;
+    layout1.card2BotaoLink = res.placements[start].creatives[0].CARD_2_BOTAO_LINK;
+    layout1.card2BotaoTexto = res.placements[start].creatives[0].CARD_2_BOTAO_TEXTO;
+    layout1.card2Descricao = res.placements[start].creatives[0].CARD_2_DESCRICAO;
+    layout1.card2Imagem = res.placements[start].creatives[0].CARD_2_IMG;
+    layout1.card2Titulo = res.placements[start].creatives[0].CARD_2_TITULO;
+    layout1.ilustracao = res.placements[start].creatives[0].ILUSTRACAO;
+    layout1.titulo = res.placements[start].creatives[0].TITULO;
+    layout1.subtitulo = res.placements[start].creatives[0].SUBTITULO;
+    const componentRef = callback(arguments[3], arguments[4]);
+    (componentRef.instance as IComponentHost).setData(layout1);
+  }
+
+  layout_2(res, start, callback) {
+    let layout2: Layout2 = new Layout2();
+    layout2.botaoTexto = res.placements[start].creatives[0].BOTAO_TEXTO;
+    layout2.ilustracao = res.placements[start].creatives[0].ILUSTRACAO;
+    layout2.botaoLink = res.placements[start].creatives[0].BOTAO_LINK;
+    layout2.descricao = res.placements[start].creatives[0].DESCRICAO;
+    layout2.titulo = res.placements[start].creatives[0].TITULO;
+    layout2.subtitulo = res.placements[start].creatives[0].SUBTITULO;
+    const componentRef = callback(arguments[3], arguments[4]);
+    (componentRef.instance as IComponentHost).setData(layout2);
+  }
+
+  layout_3() {
+
+  }
+
+  layout_4() {
+
+  }
+
+  layout_5() {
+
+  }
+
+  layout_6() {
+
+  }
+  layout_7() {
+
+  }
+  layout_8() {
+
+  }
 }
