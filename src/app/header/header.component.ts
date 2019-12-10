@@ -21,24 +21,24 @@ export class HeaderComponent implements OnInit {
   isInteract: boolean = false;
 
   ngOnInit() {
-    if (localStorage.getItem('sgs') === 'case1') {
-      this.construirBotao({ type: 'success', message: 'Case 1: Cliente declarou interesse em Abrir conta PJ, Máquinha, Emitir boleto e Vender mais.' });
-    }
-    if (localStorage.getItem('sgs') === 'case2') {
-      this.construirBotao({ type: 'success', message: 'Case 2: Cliente declarou interesse em Aprendizado, Gestão DAS e Finanças' });
-    }
-    if (localStorage.getItem('sgs') === 'case3') {
-      this.construirBotao({ type: 'success', message: 'Case 3: Página totalmente personalizada.' });
-    }
-    if (localStorage.getItem('sgs') === 'case4') {
-      this.construirBotao({ type: 'success', message: 'Case 4: Cliente anônimo, página de conteúdo pré-determinado com variação de posição entre o modulo 1 e modulo 2.' });
-    }
+    // if (localStorage.getItem('sgs') === 'case1') {
+    //   this.construirBotao({ type: 'success', message: 'Case 1: Cliente declarou interesse em Abrir conta PJ, Máquinha, Emitir boleto e Vender mais.' });
+    // }
+    // if (localStorage.getItem('sgs') === 'case2') {
+    //   this.construirBotao({ type: 'success', message: 'Case 2: Cliente declarou interesse em Aprendizado, Gestão DAS e Finanças' });
+    // }
+    // if (localStorage.getItem('sgs') === 'case3') {
+    //   this.construirBotao({ type: 'success', message: 'Case 3: Página totalmente personalizada.' });
+    // }
+    // if (localStorage.getItem('sgs') === 'case4') {
+    //   this.construirBotao({ type: 'success', message: 'Case 4: Cliente anônimo, página de conteúdo pré-determinado com variação de posição entre o modulo 1 e modulo 2.' });
+    // }
   }
 
   changeVision() {
     this.isInteract = !this.isInteract;
   }
-
+  
   construirBotao(alerta: Alert) {
     this.botao = alerta;
     this.mostrar = true;
