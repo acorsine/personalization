@@ -21,12 +21,14 @@ import { Layout8Component } from '../layout8/layout8.component';
 
 import { IComponentHost } from './component-host.interface';
 import { ComponentHostDirective } from './component-host.directive';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-rich',
   templateUrl: './rich.component.html',
   styleUrls: ['./rich.component.scss']
 })
+
 export class RichComponent implements OnInit {
 
   layout1: Layout1 = new Layout1();
@@ -50,25 +52,20 @@ export class RichComponent implements OnInit {
 
   @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient, private router: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    this.loadPage();
+    this.router.queryParams.subscribe((params) => {
+      let segmento = params['sgs'];
+      this.loadPage(segmento);
+    })
   };
 
-  loadSgs(sgs) {
-    localStorage.setItem('sgs', sgs);
-    window.location.reload();
-  };
-
-  // (function(angular) {
-
-  private loadPage() {
-    const segmento = localStorage.getItem('sgs')
-    console.log('segmento', segmento)
+  private loadPage(segmento) {
     const viewContainerRef = this.componentHost.viewContainerRef;
+    viewContainerRef.clear();
     const url = `https://integration.richrelevance.com/rrserver/api/personalize?apiKey=56ab1488ab784010`;
     this.http.get(`${url}&apiClientKey=088b28bb18dee371&placements=generic_page.content_1|generic_page.content_2|generic_page.content_3|generic_page.content_4&sgs=${segmento}`)
       .subscribe((res: any) => {

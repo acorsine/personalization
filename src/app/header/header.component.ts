@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RichComponent } from '../rich/rich.component';
+import { Router } from '@angular/router';
 
 interface Alert {
   type: string;
@@ -13,10 +14,11 @@ interface Alert {
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private richComponent: RichComponent) { }
+  constructor(private router: Router) { }
 
   mostrar = false;
   botao: Alert;
+  isInteract: boolean = false;
 
   ngOnInit() {
     if (localStorage.getItem('sgs') === 'case1') {
@@ -33,8 +35,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  saveSgs(valor) {
-    this.richComponent.loadSgs(valor);
+  changeVision() {
+    this.isInteract = !this.isInteract;
   }
 
   construirBotao(alerta: Alert) {

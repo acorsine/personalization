@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Layout1 } from '../models/layout_1';
 import { Layout2 } from '../models/layout_2';
@@ -19,15 +20,17 @@ import { Layout7Component } from '../layout7/layout7.component';
 import { Layout8Component } from '../layout8/layout8.component';
 
 import { IComponentHost } from './component-host.interface';
-import { ComponentHostDirective } from './component-host.directive';
-import { HttpClient } from '@angular/common/http';
-import { Type } from '@angular/compiler';
+import { ComponentHostDirectiveI } from './component-host.directive';
+import { InteractService } from '../services/interact.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-interact',
   templateUrl: './interact.component.html',
   styleUrls: ['./interact.component.scss']
 })
+
 export class InteractComponent implements OnInit {
 
   layout1: Layout1 = new Layout1();
@@ -49,40 +52,39 @@ export class InteractComponent implements OnInit {
     layout_8: Layout8Component
   }
 
-  @ViewChild(ComponentHostDirective, { static: true }) componentHost: ComponentHostDirective;
+  @ViewChild(ComponentHostDirectiveI, { static: true }) componentHost: ComponentHostDirectiveI;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient) {
-  }
+  constructor(private interactService: InteractService,private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-  
-    var body = {
-      "sessionId":"33446ad",
-      "commands":[
-        {
-          "action":"startSession",
-          "audienceID":[
-            {
-              "v":"3393837837", "t":"string", "n":"NR_PESS"
-            }
-          ],
-          "audienceLevel":"Cliente",
-          "ic":"MEI",
-          "relyOnExistingSession":false,
-          "parameters":[],
-          "debug":false
+    const viewContainerRef = this.componentHost.viewContainerRef;
+    viewContainerRef.clear();
+    this.interactService.getInteractLayout()
+      .subscribe((res: any) => {
+        let start = 0;
+        res.responses[1].offerLists.forEach((offerList) => {
+          let offerLayout = res.responses[1].offerLists[0].offers[0].n
+          console.log(offerLayout);
+          if (offerLayout == 'Mei - Layout 1') {
+            this.layout1.card1BotaoLink = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meilinkbotaocard1').v;
+            this.layout1.card1BotaoTexto = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meitextobotaocard1').v;
+            this.layout1.card1Descricao = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meidescricaocard1').v;
+            this.layout1.card1Imagem = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meiimagemcard1').v;
+            this.layout1.card1Titulo = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meititulocard1').v;
+            this.layout1.card2BotaoLink = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meilinkbotaocard2').v;
+            this.layout1.card2BotaoTexto = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meitextobotaocard2').v;
+            this.layout1.card2Descricao = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meidescricaocard2').v;
+            this.layout1.card2Imagem = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meiimagemcard2').v;
+            this.layout1.card2Titulo = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meititulocard2').v;
+            this.layout1.ilustracao = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meiilustracao').v;
+            this.layout1.titulo = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meititulo').v;
+            this.layout1.subtitulo = res.responses[1].offerLists[0].offers[0].attributes.find((attr) => attr.n == 'meisubtitulo').v;
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+              this.layoutMapping[res.responses[1].offerLists[0].offers[0].attributes[5].v]);
+            const componentRef = viewContainerRef.createComponent(componentFactory);
+            (componentRef.instance as IComponentHost).setData(this.layout1);
           }
-        ]
-    };
-
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    const url = `http://localhost:4200/api/interact/servlet/RestServlet`;
-    const res = this.http.post(url, body).subscribe((res) => {console.log(res)});
-}
-
-// (function(angular) {
-
-  
+        });
+      });
+  };
 }

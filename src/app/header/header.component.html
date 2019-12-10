@@ -32,6 +32,8 @@
             Interact
           </a>
         </li>
+
+        <input type="checkbox" [checked]="isInteract" (change)="changeVision()" />
        
         <li class="nav-item">
           <a class="nav-link" routerLink="/profileform">
@@ -40,28 +42,28 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" (click)="saveSgs('case1')" href="#">
+          <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case1', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-step.svg" class="menu-icon d-lg-none" />
             Case 1
           </a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" (click)="saveSgs('case2')" href="#">
+          <a class="nav-link" [routerLink]="['/home']" [queryParams]="{sgs: 'case2', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-std-financing-reseller-menu.svg" class="menu-icon d-lg-none" />
             Case 2
           </a>
         </li>
        
         <li class="nav-item">
-          <a class="nav-link" (click)="saveSgs('case3')" href="#">
+          <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case3', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-news.svg" class="menu-icon d-lg-none" />
             Case 3
           </a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" (click)="saveSgs('case4')" href="#">
+          <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case4', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-communication-chat.svg" class="menu-icon d-lg-none" />
             Case 4
           </a>

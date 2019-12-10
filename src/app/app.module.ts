@@ -24,13 +24,16 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 
 import { RichComponent } from './rich/rich.component';
 import { ComponentHostDirective } from './rich/component-host.directive';
+import { ComponentHostDirectiveI } from './interact/component-host.directive';
 import { InteractComponent } from './interact/interact.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentHostDirective,
+    ComponentHostDirectiveI,
     HeaderComponent,
     FooterComponent,
     Layout1Component,
@@ -45,6 +48,7 @@ import { InteractComponent } from './interact/interact.component';
     ProfileEditorComponent,
     RichComponent,
     InteractComponent,
+    HomeComponent,
   
 
   ],
@@ -56,7 +60,7 @@ import { InteractComponent } from './interact/interact.component';
     AppRoutingModule
   ],
 
-  providers: [RichComponent],
+  providers: [RichComponent, InteractComponent],
   entryComponents: [Layout1Component, Layout2Component, Layout3Component, Layout4Component, Layout5Component,
     Layout6Component, Layout7Component, Layout8Component],
   bootstrap: [AppComponent],

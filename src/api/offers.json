@@ -1,0 +1,18 @@
+ {
+    "sessionId":"33446ad",
+    "commands":[
+      {
+        "action":"startSession",
+        "audienceID":[
+          {
+            "v":"3393837837", "t":"string", "n":"NR_PESS"
+          }
+        ],
+        "audienceLevel":"Cliente",
+        "ic":"MEI",
+        "relyOnExistingSession":false,
+        "parameters":[],
+        "debug":false
+        }
+      ]
+  }
