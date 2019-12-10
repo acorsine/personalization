@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IComponentHost } from '../component-host.interface';
 import { Layout3 } from '../models/layout_3';
 
 @Component({
@@ -7,7 +6,7 @@ import { Layout3 } from '../models/layout_3';
   templateUrl: './layout3.component.html',
   styleUrls: ['./layout3.component.scss','../app.component.scss']
 })
-export class Layout3Component implements OnInit, IComponentHost {
+export class Layout3Component implements OnInit {
   layout3: Layout3 = new Layout3();
   constructor() { }
 

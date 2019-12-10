@@ -18,14 +18,14 @@ import { Layout6Component } from './layout6/layout6.component';
 import { Layout7Component } from './layout7/layout7.component';
 import { Layout8Component } from './layout8/layout8.component';
 
-import { SegmentosComponent } from './segmentos/segmentos.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 
 import { RichComponent } from './rich/rich.component';
 import { ComponentHostDirective } from './rich/component-host.directive';
+import { InteractComponent } from './interact/interact.component';
+
 
 @NgModule({
   declarations: [
@@ -42,9 +42,10 @@ import { ComponentHostDirective } from './rich/component-host.directive';
     Layout8Component,
     Layout7Component,
     Layout8Component,
-    SegmentosComponent,
     ProfileEditorComponent,
     RichComponent,
+    InteractComponent,
+  
 
   ],
   imports: [
