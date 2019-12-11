@@ -31,29 +31,29 @@ export class InteractService {
                 "numberRequested": 1,
                 "attributes": []
               }
-            }//,
-          //   {
-          //     "dupPolicy": 1, "numberRequested": 1, "ip": "Content_2",
-          //     "offerAttribReq": {
-          //       "numberRequested": 5,
-          //       "attributes": []
-          //     }
-          //   },
-          //   {
-          //   "dupPolicy": 1, "numberRequested": 1, "ip": "Content_3",
-          //   "offerAttribReq": {
-          //     "numberRequested": 1,
-          //     "attributes": []
-          //   }
-          // },
-          // {
-          //   "dupPolicy": 1, "numberRequested": 1, "ip": "Content_4",
-          //   "offerAttribReq": {
-          //     "numberRequested": 5,
-          //     "attributes": []
+            },
+            {
+              "dupPolicy": 1, "numberRequested": 1, "ip": "Content_2",
+              "offerAttribReq": {
+                "numberRequested": 1,
+                "attributes": []
+              }
+            },
+            {
+              "dupPolicy": 1, "numberRequested": 1, "ip": "Content_3",
+              "offerAttribReq": {
+                "numberRequested": 1,
+                "attributes": []
+              }
+            },
+            {
+              "dupPolicy": 1, "numberRequested": 1, "ip": "Content_4",
+              "offerAttribReq": {
+                "numberRequested": 1,
+                "attributes": []
 
-          //   }
-          // }
+              }
+            }
           ]
         }
       ]

@@ -1,6 +1,5 @@
 <div *ngIf="mostrar">
   <ngb-alert [type]="botao.type" style="margin-top: 74px" (close)="close()">{{ botao.message }}</ngb-alert>
-
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -15,7 +14,7 @@
       <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNav"
         aria-label="Toggle navigation">
         <div class="hamburger-wrapper">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">Toggle navigation</span>Î
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -27,41 +26,44 @@
     <div class="collapse-wrapper">
       <nav class="navbar-nav ml-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/interact">
-            Interact
-          </a>
+        <li class="nav-item" style="padding-top: 20px;">
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+              [checked]="isInteract" (change)="changeVision()">
+            <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+          </div>
         </li>
-
-        <input type="checkbox" [checked]="isInteract" (change)="changeVision()" />
-       
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/profileform">
             Form
           </a>
-        </li>
-        
+        </li> -->
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case1', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-step.svg" class="menu-icon d-lg-none" />
             Case 1
           </a>
         </li>
-        
+
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/home']" [queryParams]="{sgs: 'case2', 'isInteract': isInteract}" href="#">
+          <a class="nav-link" [routerLink]="['/home']" [queryParams]="{sgs: 'case2', 'isInteract': isInteract}"
+            href="#">
             <img src="assets/img/ic-std-financing-reseller-menu.svg" class="menu-icon d-lg-none" />
             Case 2
           </a>
         </li>
-       
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case3', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-news.svg" class="menu-icon d-lg-none" />
             Case 3
           </a>
         </li>
-        
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" [queryParams]="{sgs: 'case4', 'isInteract': isInteract}" href="#">
             <img src="assets/img/ic-communication-chat.svg" class="menu-icon d-lg-none" />
