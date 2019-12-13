@@ -9,7 +9,7 @@ export class InteractService {
   constructor(private http: HttpClient) {
   }
 
-  getInteractLayout() {
+  getInteractLayout(segmento) {
     var body = {
       "sessionId": "58190615",
       "commands": [
@@ -19,7 +19,7 @@ export class InteractService {
           "audienceLevel": "Cliente",
           "ic": "MEI",
           "relyOnExistingSession": false,
-          "parameters": [],
+          "parameters": [{ "v": segmento, "t": "string", "n": "SGS" }],
           "debug": false
         },
         {
@@ -51,14 +51,12 @@ export class InteractService {
               "offerAttribReq": {
                 "numberRequested": 1,
                 "attributes": []
-
               }
             }
           ]
         }
       ]
     };
-
     const url = `http://localhost:4200/api/interact/servlet/RestServlet`;
     return this.http.post(url, body);
   }

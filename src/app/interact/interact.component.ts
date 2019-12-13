@@ -54,12 +54,19 @@ export class InteractComponent implements OnInit {
 
   @ViewChild(ComponentHostDirectiveI, { static: true }) componentHost: ComponentHostDirectiveI;
 
-  constructor(private interactService: InteractService, private componentFactoryResolver: ComponentFactoryResolver, private http: HttpClient, private router: ActivatedRoute) { }
+  constructor(private interactService: InteractService, private componentFactoryResolver: ComponentFactoryResolver,
+    private http: HttpClient, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.queryParams.subscribe((params) => {
+      let segmento = params['sgs'];
+      this.loadPage(segmento);
+    })
+  };
+  private loadPage(segmento) {
     const viewContainerRef = this.componentHost.viewContainerRef;
     viewContainerRef.clear();
-    this.interactService.getInteractLayout()
+    this.interactService.getInteractLayout(segmento)
       .subscribe((res: any) => {
         let start = 0;
         res.responses[1].offerLists.forEach((offerList) => {
@@ -119,17 +126,17 @@ export class InteractComponent implements OnInit {
               this.layoutMapping[res.responses[1].offerLists[start].offers[0].attributes.find((attr) => attr.n == 'meilayout2').v]);
             const componentRef = viewContainerRef.createComponent(componentFactory);
             (componentRef.instance as IComponentHost).setData(this.layout4)
-          }       
+          }
           if (offerLayout == 'Mei - Layout 5') {
             const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
               this.layoutMapping[res.responses[1].offerLists[start].offers[0].attributes.find((attr) => attr.n == 'meilayout3').v]);
             const componentRef = viewContainerRef.createComponent(componentFactory);
-          }       
+          }
           if (offerLayout == 'Mei - Layout 6') {
             const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
               this.layoutMapping[res.responses[1].offerLists[start].offers[0].attributes.find((attr) => attr.n == 'meilayout3').v]);
             const componentRef = viewContainerRef.createComponent(componentFactory);
-          }  
+          }
           if (offerLayout == 'Mei - Layout 7') {
             const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
               this.layoutMapping[res.responses[1].offerLists[start].offers[0].attributes.find((attr) => attr.n == 'meilayout3').v]);
@@ -144,4 +151,4 @@ export class InteractComponent implements OnInit {
         });
       });
   };
-}
+};
